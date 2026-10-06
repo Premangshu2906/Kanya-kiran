@@ -1,0 +1,19 @@
+{
+  "name": "kanya-kiran-website",
+  "version": "1.0.0",
+  "description": "Full localized clone of KanyaKiran website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y serve . -p 3000",
+    "dev": "npx -y serve . -p 3000"
+  },
+  "keywords": [
+    "kanyakiran",
+    "website",
+    "clone",
+    "kiit",
+    "kiss"
+  ],
+  "author": "KanyaKiran",
+  "license": "ISC"
+}
