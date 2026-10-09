@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="avada-html-layout-wide avada-html-header-position-top avada-is-100-percent-template" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -395,6 +395,188 @@
 				grid-template-columns: 1fr;
 			}
 		}
+	
+		/* Global Background Overlay */
+		
+		/* Global Background Overlay Pattern */
+		.fusion-fullwidth {
+			position: relative;
+		}
+		.fusion-fullwidth::before {
+			content: "";
+			position: absolute;
+			top: 0; left: 0; width: 100%; height: 100%;
+			background-image: 
+				linear-gradient(to right, rgba(128, 128, 128, 0.1) 1px, transparent 1px),
+				linear-gradient(to bottom, rgba(128, 128, 128, 0.1) 1px, transparent 1px);
+			background-size: 24px 24px;
+			z-index: 0;
+			pointer-events: none;
+		}
+		.fusion-fullwidth > div {
+			position: relative;
+			z-index: 1;
+		}
+
+
+		/* Scroll Animations */
+		.scroll-anim {
+			opacity: 0;
+			transform: translateY(30px);
+			transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+		}
+		.scroll-anim.in-view {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* EIR Showcase Style Stats */
+		.eir-stats-container {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 40px;
+			align-items: center;
+			margin-top: 40px;
+			position: relative;
+			min-height: 400px;
+		}
+		@media (max-width: 900px) {
+			.eir-stats-container {
+				grid-template-columns: 1fr;
+			}
+		}
+		.eir-stat-slide {
+			display: none;
+			animation: fadeUp 0.5s ease-out forwards;
+		}
+		.eir-stat-slide.active {
+			display: block;
+		}
+		@keyframes fadeUp {
+			from { opacity: 0; transform: translateY(20px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+		.eir-tag {
+			display: inline-block;
+			padding: 6px 16px;
+			font-size: 12px;
+			font-weight: 800;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			background: rgba(208, 92, 227, 0.1);
+			border: 1px solid rgba(208, 92, 227, 0.3);
+			color: #d05ce3;
+			border-radius: 30px;
+			margin-bottom: 20px;
+		}
+		.eir-num {
+			font-family: 'Playfair Display', serif;
+			font-size: 64px;
+			font-weight: 700;
+			color: #3b0746;
+			margin-bottom: 20px;
+			line-height: 1.1;
+		}
+		.eir-desc {
+			font-size: 18px;
+			line-height: 1.8;
+			color: #555;
+			margin-bottom: 30px;
+		}
+		.eir-nav {
+			display: flex;
+			gap: 15px;
+		}
+		.eir-nav-btn {
+			background: #f7f0f9;
+			border: 1px solid #d05ce3;
+			color: #3b0746;
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+		.eir-nav-btn:hover {
+			background: #d05ce3;
+			color: #fff;
+		}
+		.eir-visual {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+		}
+		.eir-circle {
+			width: 320px;
+			height: 320px;
+			border-radius: 50%;
+			background: #f7f0f9;
+			border: 2px solid rgba(208, 92, 227, 0.3);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 20px 40px rgba(107, 17, 123, 0.15);
+			animation: float 6s ease-in-out infinite;
+			position: absolute;
+		}
+		.eir-circle::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			border-radius: 50%;
+			background: rgba(208, 92, 227, 0.1);
+			filter: blur(30px);
+			z-index: -1;
+		}
+		@keyframes float {
+			0% { transform: translateY(0px); }
+			50% { transform: translateY(-20px); }
+			100% { transform: translateY(0px); }
+		}
+		.eir-icon-img {
+			width: 160px;
+			height: 160px;
+			object-fit: contain;
+			filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+		}
+
+		/* Marquee */
+		.marquee-container {
+			overflow: hidden;
+			white-space: nowrap;
+			padding: 25px 0;
+			background: #1b0026;
+			border-top: 2px solid #3b0746;
+			border-bottom: 2px solid #3b0746;
+			position: relative;
+		}
+		.marquee-content {
+			display: inline-block;
+			animation: marquee 30s linear infinite;
+		}
+		.marquee-item {
+			display: inline-flex;
+			align-items: center;
+			margin: 0 40px;
+			color: #fff;
+			font-size: 16px;
+			font-weight: 500;
+			letter-spacing: 1px;
+		}
+		.marquee-item i {
+			color: #d05ce3;
+			margin-right: 12px;
+		}
+		@keyframes marquee {
+			0% { transform: translateX(0); }
+			100% { transform: translateX(-50%); }
+		}
+
 	</style>
 
 	<script id="jquery-core-js" src="./wp-includes/js/jquery/jquery.min.js"></script>
@@ -403,6 +585,7 @@
 </head>
 
 <body class="home wp-singular page-template page-template-100-width">
+	
 	
 	<a class="skip-link screen-reader-text" href="#content" style="display:none;">Skip to content</a>
 
@@ -674,7 +857,7 @@
 								</div>
 
 								<!-- WHO WE ARE SECTION -->
-								<div class="fusion-fullwidth fullwidth-box" id="whoweare" style="padding:90px 30px;background-color:#ffffff;">
+								<div class="fusion-fullwidth fullwidth-box scroll-anim" id="whoweare" style="padding:90px 30px;background-color:#ffffff;">
 									<div style="max-width:1248px;margin:0 auto;display:flex;gap:50px;flex-wrap:wrap;align-items:center;">
 										
 										<!-- PHOTO GALLERY SLIDER -->
@@ -703,7 +886,7 @@
 								</div>
 
 								<!-- UPDATED OUR MISSION SECTION (6 POINTS WITH ZERO TOLERANCE EMPHASIS) -->
-								<div class="fusion-fullwidth fullwidth-box" id="mission" style="padding:90px 30px;background-color:#f9f6fa;">
+								<div class="fusion-fullwidth fullwidth-box scroll-anim" id="mission" style="padding:90px 30px;background-color:#f9f6fa;">
 									<div style="max-width:1248px;margin:0 auto;">
 										<h2 style="font-family:'Playfair Display', serif;font-size:48px;color:#3B0746;text-align:center;margin-bottom:50px;">Our Mission</h2>
 										
@@ -750,7 +933,7 @@
 								</div>
 
 								<!-- FACTS: VIOLENCE AGAINST WOMEN & GIRLS, INDIA SECTION -->
-								<div class="fusion-fullwidth fullwidth-box" id="facts" style="padding:90px 30px;background-color:#ffffff;">
+								<div class="fusion-fullwidth fullwidth-box scroll-anim" id="facts" style="padding:90px 30px;background-color:#ffffff;">
 									<div style="max-width:1248px;margin:0 auto;">
 										
 										<!-- HIGH-IMPACT SEXUAL VIOLENCE BOX (FULL WIDTH PRESENTABLE ACROSS SCREEN, NO SOURCE) -->
@@ -775,56 +958,71 @@
 											</p>
 										</div>
 
-										<!-- THE FOUR PILLAR STATISTICS GRID (SLEEK SMALLER CARDS WITHOUT SOURCES) -->
-										<div>
-											<h3 style="font-family:'Playfair Display', serif;font-size:32px;color:#3B0746;margin-bottom:25px;text-align:center;">The Four Pillar Statistics</h3>
+										<!-- THE FOUR PILLAR STATISTICS - EIR SHOWCASE STYLE -->
+										<div class="scroll-anim">
+											<h3 style="font-family:'Playfair Display', serif;font-size:42px;color:#3B0746;margin-bottom:15px;text-align:center;font-weight:700;">Statistics Showcase</h3>
+											<p style="text-align:center;color:#666;font-size:18px;max-width:600px;margin:0 auto;">The stark reality of violence against women and girls across our key intervention pillars.</p>
 											
-											<div class="facts-stats-grid">
-												
-												<!-- PILLAR STAT 1: PHYSICAL VIOLENCE -->
-												<div class="fact-stat-card">
-													<span class="fact-pillar-tag">Physical Violence</span>
-													<div class="fact-headline-num">1.33 lakh+</div>
-													<p class="fact-label-text">
-														Cases of cruelty by husband or relatives registered in a single year, making up nearly 30% of all crimes against women in India — equivalent to one crime every 70 seconds.
-													</p>
+											<div class="eir-stats-container">
+												<!-- LEFT SIDE: STAT DETAILS -->
+												<div>
+													<!-- Slide 1 -->
+													<div class="eir-stat-slide active" id="stat-slide-0">
+														<span class="eir-tag">Physical Violence</span>
+														<div class="eir-num">1.33 lakh+</div>
+														<p class="eir-desc">Cases of cruelty by husband or relatives registered in a single year, making up nearly 30% of all crimes against women in India — equivalent to one crime every 70 seconds.</p>
+													</div>
+													<!-- Slide 2 -->
+													<div class="eir-stat-slide" id="stat-slide-1">
+														<span class="eir-tag">Educational Empowerment</span>
+														<div class="eir-num">15 lakh girls</div>
+														<p class="eir-desc">Under 18 are married in India every year, cutting short their education. Fewer than 2 in 10 married girls are able to remain in school.</p>
+													</div>
+													<!-- Slide 3 -->
+													<div class="eir-stat-slide" id="stat-slide-2">
+														<span class="eir-tag">Cyber Violence</span>
+														<div class="eir-num">19,510</div>
+														<p class="eir-desc">Cybercrime cases against women registered in a single year, including digital harassment, morphing, stalking, and non-consensual media sharing.</p>
+													</div>
+
+													<div class="eir-nav">
+														<button class="eir-nav-btn" onclick="prevStat()"><i class="fas fa-chevron-left"></i></button>
+														<button class="eir-nav-btn" onclick="nextStat()"><i class="fas fa-chevron-right"></i></button>
+													</div>
 												</div>
 
-												<!-- PILLAR STAT 2: EDUCATIONAL EMPOWERMENT -->
-												<div class="fact-stat-card">
-													<span class="fact-pillar-tag">Educational Empowerment</span>
-													<div class="fact-headline-num">15 lakh girls</div>
-													<p class="fact-label-text">
-														Under 18 are married in India every year, cutting short their education. Fewer than 2 in 10 married girls are able to remain in school.
-													</p>
+												<!-- RIGHT SIDE: VISUAL/ICON -->
+												<div class="eir-visual">
+													<div class="eir-circle">
+														<!-- Icons that switch based on the slide -->
+														<i class="fas fa-fist-raised" id="stat-icon-0" style="font-size:80px;color:#d05ce3;"></i>
+														<i class="fas fa-user-graduate" id="stat-icon-1" style="font-size:80px;color:#d05ce3;display:none;"></i>
+														<i class="fas fa-laptop-code" id="stat-icon-2" style="font-size:80px;color:#d05ce3;display:none;"></i>
+													</div>
 												</div>
-
-												<!-- PILLAR STAT 3: CYBER VIOLENCE -->
-												<div class="fact-stat-card">
-													<span class="fact-pillar-tag">Cyber Violence</span>
-													<div class="fact-headline-num">19,510</div>
-													<p class="fact-label-text">
-														Cybercrime cases against women registered in a single year, including digital harassment, morphing, stalking, and non-consensual media sharing.
-													</p>
-												</div>
-
-												<!-- PILLAR STAT 4: PSYCHOLOGICAL & EMOTIONAL VIOLENCE -->
-												<div class="fact-stat-card">
-													<span class="fact-pillar-tag">Psychological &amp; Emotional Violence</span>
-													<div class="fact-headline-num" style="font-size:26px;color:#d05ce3;">TO BE CONFIRMED</div>
-													<p class="fact-label-text" style="color:#777;font-style:italic;">
-														Addressing unseen mental trauma, verbal abuse, isolation, and psychological intimidation to foster emotional safety.
-													</p>
-												</div>
-
 											</div>
 										</div>
 
 									</div>
 								</div>
 
+								<!-- MARQUEE SOURCES (NIMAYA STYLE) -->
+								<div class="marquee-container scroll-anim">
+									<div class="marquee-content">
+										<span class="marquee-item"><i class="fas fa-bolt"></i> Source: National Crime Records Bureau (NCRB) Crime in India 2023</span>
+										<span class="marquee-item"><i class="fas fa-bolt"></i> Source: UNICEF State of the World's Children</span>
+										<span class="marquee-item"><i class="fas fa-bolt"></i> Source: Ministry of Women and Child Development</span>
+										<span class="marquee-item"><i class="fas fa-bolt"></i> Source: National Family Health Survey (NFHS-5)</span>
+										<!-- Duplicate for continuous scroll -->
+										<span class="marquee-item"><i class="fas fa-bolt"></i> Source: National Crime Records Bureau (NCRB) Crime in India 2023</span>
+										<span class="marquee-item"><i class="fas fa-bolt"></i> Source: UNICEF State of the World's Children</span>
+										<span class="marquee-item"><i class="fas fa-bolt"></i> Source: Ministry of Women and Child Development</span>
+										<span class="marquee-item"><i class="fas fa-bolt"></i> Source: National Family Health Survey (NFHS-5)</span>
+									</div>
+								</div>
+
 								<!-- SURVIVORS OF SEXUAL VIOLENCE SLIDE (SECTION 9) -->
-								<div class="fusion-fullwidth fullwidth-box" style="padding:100px 30px;background-color:#1b0026;color:#ffffff;text-align:center;">
+								<div class="fusion-fullwidth fullwidth-box scroll-anim" style="padding:100px 30px;background-color:#1b0026;color:#ffffff;text-align:center;">
 									<div style="max-width:900px;margin:0 auto;">
 										<div style="font-size:56px;color:#d05ce3;margin-bottom:25px;"><i class="fas fa-fist-raised"></i></div>
 										<p style="font-family:'Playfair Display', serif;font-size:34px;line-height:1.7;color:#ffffff;margin:0;">
@@ -834,7 +1032,7 @@
 								</div>
 
 								<!-- WHAT YOU CAN DO SECTION (SECTION 10) -->
-								<div class="fusion-fullwidth fullwidth-box" id="whatyoucando" style="padding:90px 30px;background-color:#6b117b;color:#ffffff;">
+								<div class="fusion-fullwidth fullwidth-box scroll-anim" id="whatyoucando" style="padding:90px 30px;background-color:#6b117b;color:#ffffff;">
 									<div style="max-width:1248px;margin:0 auto;">
 										<h2 style="font-family:'Playfair Display', serif;font-size:48px;text-align:center;margin-bottom:50px;">What you can do?</h2>
 
@@ -1190,6 +1388,41 @@
 		});
 
 		document.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+		// EIR Showcase Stats Slider
+		let currentStat = 0;
+		const totalStats = 3;
+		function showStat(index) {
+			for (let i = 0; i < totalStats; i++) {
+				document.getElementById('stat-slide-' + i).classList.remove('active');
+				document.getElementById('stat-icon-' + i).style.display = 'none';
+			}
+			document.getElementById('stat-slide-' + index).classList.add('active');
+			document.getElementById('stat-icon-' + index).style.display = 'block';
+		}
+		function nextStat() {
+			currentStat = (currentStat + 1) % totalStats;
+			showStat(currentStat);
+		}
+		function prevStat() {
+			currentStat = (currentStat - 1 + totalStats) % totalStats;
+			showStat(currentStat);
+		}
+
+		// Scroll Animations (Intersection Observer)
+		document.addEventListener('DOMContentLoaded', function() {
+			const animElements = document.querySelectorAll('.scroll-anim');
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('in-view');
+					}
+				});
+			}, { threshold: 0.1 });
+			
+			animElements.forEach(el => observer.observe(el));
+		});
+
 	</script>
 
 	<!-- Local Scripts -->
