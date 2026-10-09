@@ -615,32 +615,29 @@
 		}
 
 	
-		/* EIR Global Background Pattern */
-		body {
-			 !important; /* EIR Dark Theme */
+		
+		html, body, #boxed-wrapper, #wrapper, #main, #content, .fusion-fullwidth {
+			background-color: #0a0a0a !important;
 			color: #ffffff;
 		}
+		
 		body::before {
 			content: "";
 			position: fixed;
 			top: 0; left: 0; width: 100vw; height: 100vh;
-			
+			background-color: #0a0a0a;
 			background-image: 
-				radial-gradient(circle at 50% 25%, rgba(212,175,55,0.05) 0%, transparent 50%),
+				radial-gradient(circle at 50% 25%, rgba(212,175,55,0.08) 0%, transparent 50%),
 				linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
 				linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 			background-size: 100% 100%, 30px 30px, 30px 30px;
-			z-index: -999;
+			z-index: 0;
 			pointer-events: none;
 		}
-		.fusion-fullwidth {
-			background-color: transparent !important; /* Let the body background show */
-			position: relative;
-		}
-		.fusion-fullwidth::before {
-			display: none;
-		}
-		
+
+		/* Ensure content is above the fixed background */
+		#wrapper { position: relative; z-index: 1; }
+
 		::selection {
 			background: #ffcc00;
 			color: #000;
@@ -1045,7 +1042,7 @@
 										</div>
 
 										<!-- THE FOUR PILLAR STATISTICS - EIR SHOWCASE STYLE -->
-										<div class="scroll-anim" style="margin-top:50px;">
+										<div class="scroll-anim" style="margin-top:50px; position:relative; z-index:5;">
 											
 											<!-- EIR Style Header inside showcase -->
 											<header style="display:flex;align-items:center;justify-content:space-between;padding-bottom:15px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:30px;">
@@ -1058,7 +1055,7 @@
 											</header>
 
 											<div class="eir-stats-container">
-												<!-- LEFT SIDE: STAT DETAILS -->
+												<!-- LEFT SIDE: STAT DETAILS (Now with Icons instead of numbers) -->
 												<div style="position:relative; min-height:300px; display:flex; flex-direction:column; justify-content:center;">
 													<!-- Slide 1 -->
 													<div class="eir-stat-slide active" id="stat-slide-0">
@@ -1066,7 +1063,7 @@
 															<span style="padding:4px 16px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:2px;background:rgba(255,216,77,0.1);border:1px solid rgba(255,216,77,0.3);color:#FFD84D;text-transform:uppercase;">Physical Violence</span>
 															<span style="font-size:12px;font-weight:600;color:#888;letter-spacing:2px;">PILLAR #01</span>
 														</div>
-														<div class="eir-num" style="color:#ffffff;">1.33 lakh+</div>
+														<i class="fas fa-fist-raised" style="font-size:64px;color:#ffffff;margin-bottom:20px;display:block;"></i>
 														<p class="eir-desc" style="color:#FFD84D;font-weight:600;font-size:24px;">"Equivalent to one crime every 70 seconds"</p>
 														<p class="eir-desc" style="color:#ccc;font-size:16px;line-height:1.6;">Cases of cruelty by husband or relatives registered in a single year, making up nearly 30% of all crimes against women in India.</p>
 													</div>
@@ -1076,7 +1073,7 @@
 															<span style="padding:4px 16px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:2px;background:rgba(255,216,77,0.1);border:1px solid rgba(255,216,77,0.3);color:#FFD84D;text-transform:uppercase;">Educational Empowerment</span>
 															<span style="font-size:12px;font-weight:600;color:#888;letter-spacing:2px;">PILLAR #02</span>
 														</div>
-														<div class="eir-num" style="color:#ffffff;">15 lakh girls</div>
+														<i class="fas fa-user-graduate" style="font-size:64px;color:#ffffff;margin-bottom:20px;display:block;"></i>
 														<p class="eir-desc" style="color:#FFD84D;font-weight:600;font-size:24px;">"Cutting short their education"</p>
 														<p class="eir-desc" style="color:#ccc;font-size:16px;line-height:1.6;">Under 18 are married in India every year. Fewer than 2 in 10 married girls are able to remain in school.</p>
 													</div>
@@ -1086,7 +1083,7 @@
 															<span style="padding:4px 16px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:2px;background:rgba(255,216,77,0.1);border:1px solid rgba(255,216,77,0.3);color:#FFD84D;text-transform:uppercase;">Cyber Violence</span>
 															<span style="font-size:12px;font-weight:600;color:#888;letter-spacing:2px;">PILLAR #03</span>
 														</div>
-														<div class="eir-num" style="color:#ffffff;">19,510</div>
+														<i class="fas fa-laptop-code" style="font-size:64px;color:#ffffff;margin-bottom:20px;display:block;"></i>
 														<p class="eir-desc" style="color:#FFD84D;font-weight:600;font-size:24px;">"Digital harassment & morphing"</p>
 														<p class="eir-desc" style="color:#ccc;font-size:16px;line-height:1.6;">Cybercrime cases against women registered in a single year, including digital harassment, morphing, stalking, and non-consensual media sharing.</p>
 													</div>
@@ -1097,13 +1094,13 @@
 													</div>
 												</div>
 
-												<!-- RIGHT SIDE: VISUAL/ICON -->
+												<!-- RIGHT SIDE: VISUAL/ICON (Now with Numbers inside the circle) -->
 												<div class="eir-visual">
-													<div class="eir-circle" style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,216,77,0.2);backdrop-filter:blur(10px);">
-														<!-- Icons that switch based on the slide -->
-														<i class="fas fa-fist-raised stat-visual-icon active" id="stat-icon-0" style="font-size:80px;color:#FFD84D;"></i>
-														<i class="fas fa-user-graduate stat-visual-icon" id="stat-icon-1" style="font-size:80px;color:#FFD84D;"></i>
-														<i class="fas fa-laptop-code stat-visual-icon" id="stat-icon-2" style="font-size:80px;color:#FFD84D;"></i>
+													<div class="eir-circle" style="background:rgba(0,0,0,0.6);border:2px solid rgba(255,216,77,0.4);backdrop-filter:blur(15px);box-shadow:0 0 40px rgba(255,216,77,0.15);">
+														<!-- Numbers that switch based on the slide -->
+														<div class="stat-visual-icon active" id="stat-icon-0" style="font-family:'Playfair Display', serif; font-size:60px; font-weight:700; color:#FFD84D; text-align:center; text-shadow:0 5px 15px rgba(0,0,0,0.5);">1.33<br><span style="font-size:32px;">lakh+</span></div>
+														<div class="stat-visual-icon" id="stat-icon-1" style="font-family:'Playfair Display', serif; font-size:60px; font-weight:700; color:#FFD84D; text-align:center; text-shadow:0 5px 15px rgba(0,0,0,0.5);">15<br><span style="font-size:32px;">lakh girls</span></div>
+														<div class="stat-visual-icon" id="stat-icon-2" style="font-family:'Playfair Display', serif; font-size:60px; font-weight:700; color:#FFD84D; text-align:center; text-shadow:0 5px 15px rgba(0,0,0,0.5);">19,510<br><span style="font-size:32px;">cases</span></div>
 													</div>
 												</div>
 											</div>
